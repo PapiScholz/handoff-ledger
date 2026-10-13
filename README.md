@@ -23,7 +23,7 @@ claude plugin install handoff-ledger@handoff-ledger
 
 | You say | It does |
 |---|---|
-| `/handoff-ledger:handoff` after doing work | Writes or updates `<repo>/.claude/HANDOFF.md`, shows what changed, tells you it's safe to `/clear` |
+| `/handoff-ledger:handoff` after doing work | Writes or updates `<repo>/HANDOFF.md`, shows what changed, tells you it's safe to `/clear` |
 | `/handoff-ledger:handoff` in a fresh session | Loads the handoff, verifies it against disk, summarizes, proposes the next step |
 | `/handoff-ledger:handoff resume` | Always loads |
 | `/handoff-ledger:handoff <note>` | Saves, keeping your note verbatim |
@@ -49,7 +49,7 @@ Safeguards built in:
 - **Verify before trust**: if the disk contradicts the handoff, it says so before touching anything.
 - **Shows the delta** before overwriting an existing handoff.
 
-The first time it creates `.claude/HANDOFF.md` in a repo, it asks whether you want it committed or git-ignored.
+The first time it creates `HANDOFF.md` in a repo, it asks whether you want it committed or git-ignored. It lives at the repo root rather than under `.claude/` because Claude Code asks for approval on every write to `.claude/`; handoffs left there by version 1.0.0 are still picked up.
 
 ## License
 

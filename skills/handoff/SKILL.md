@@ -34,11 +34,13 @@ Don't ask "load or save?" unless you genuinely can't tell. A one-word command sh
 
 Walk this chain and keep **every** location that is available (it matters for mirroring):
 
-**1. Project filesystem** — `<root>/.claude/HANDOFF.md`
+**1. Project filesystem** — `<root>/HANDOFF.md`
 
 Applies whenever you can write to the real project directory: Claude Code on a local checkout, or Cowork with a connected folder (use the device's shell there, not the cloud container — anything written in the container is destroyed with the session).
 
-The root is the git top level if there is one (`git rev-parse --show-toplevel`), otherwise the working directory. Create `.claude/` if it doesn't exist.
+The root is the git top level if there is one (`git rev-parse --show-toplevel`), otherwise the working directory.
+
+Never put it under `.claude/`: Claude Code treats that directory as protected, so every write there asks the user for approval and fails outright in non-interactive sessions. A handoff left at `<root>/.claude/HANDOFF.md` by an older version is still read on LOAD; on the next SAVE, write `<root>/HANDOFF.md` and tell the user in one line that the old file can be deleted (don't delete it yourself).
 
 **2. Google Drive** — folder `Claude Handoffs/`, file `HANDOFF-<slug>.md`
 
@@ -82,9 +84,7 @@ Remember the path: the next `/handoff` in this session saves there.
 3. **Rewrite the state sections** with today's real state, add a new entry to the session log, and rotate it (see below).
 4. **If you are overwriting an existing handoff, show the delta first**: 3–5 bullets like "next steps: closed 2, added 1" / "the auth blocker: resolved, removing it". Write only after the user's go-ahead. Overwriting a continuity file without showing what changed is the fastest way to lose the user's trust. A first-time file is written directly.
 5. **Write with the file-writing tool**, not a shell heredoc: shells mangle backslashes in Windows paths and `$` in content.
-6. **Close with three lines:** where each copy ended up, what it contains in one sentence, and:
-
-   > Ready for `/clear`. In the new session, `/handoff` picks it up.
+6. **Close with three lines**, in the user's language: where each copy ended up, what it contains in one sentence, and that it's safe to `/clear` now — invoking this same skill again in the new session (with the exact command the user typed, e.g. `/handoff-ledger:handoff`) picks it up.
 
 Never run `/clear` yourself: it's the user's command.
 
@@ -176,4 +176,4 @@ locations:
 
 **Lessons learned don't belong here.** Durable rules ("always run X before Y in this repo") go to the project's `CLAUDE.md` or equivalent memory *before* cutting the session. The handoff is about this piece of work; it gets overwritten.
 
-**Commit or ignore — ask once.** The first time you create `.claude/HANDOFF.md` in a repo, mention once whether it should be committed or added to `.gitignore`. Committed helps when the project is the user's or their team's; ignored when the repo belongs to someone else or the handoff holds personal notes. It's the user's call, made once per repo.
+**Commit or ignore — ask once.** The first time you create `HANDOFF.md` in a repo, mention once whether it should be committed or added to `.gitignore`. Committed helps when the project is the user's or their team's; ignored when the repo belongs to someone else or the handoff holds personal notes. It's the user's call, made once per repo.
