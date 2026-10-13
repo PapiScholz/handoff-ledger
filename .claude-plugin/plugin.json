@@ -1,0 +1,14 @@
+{
+  "name": "session-handoff",
+  "displayName": "Session Handoff",
+  "version": "1.0.0",
+  "description": "One command, /handoff, to save a project's working state to a HANDOFF.md before /clear and pick it back up in the next session — across Claude Code, Cowork and Claude chat.",
+  "author": {
+    "name": "Ezequiel Scholz",
+    "url": "https://github.com/PapiScholz"
+  },
+  "homepage": "https://github.com/PapiScholz/session-handoff",
+  "repository": "https://github.com/PapiScholz/session-handoff",
+  "license": "MIT",
+  "keywords": ["handoff", "context", "session", "continuity", "clear", "memory"]
+}
