@@ -1,14 +1,14 @@
 {
-  "name": "session-handoff",
-  "displayName": "Session Handoff",
+  "name": "handoff-ledger",
+  "displayName": "Handoff Ledger",
   "version": "1.0.0",
   "description": "One command, /handoff, to save a project's working state to a HANDOFF.md before /clear and pick it back up in the next session — across Claude Code, Cowork and Claude chat.",
   "author": {
     "name": "Ezequiel Scholz",
     "url": "https://github.com/PapiScholz"
   },
-  "homepage": "https://github.com/PapiScholz/session-handoff",
-  "repository": "https://github.com/PapiScholz/session-handoff",
+  "homepage": "https://github.com/PapiScholz/handoff-ledger",
+  "repository": "https://github.com/PapiScholz/handoff-ledger",
   "license": "MIT",
   "keywords": ["handoff", "context", "session", "continuity", "clear", "memory"]
 }

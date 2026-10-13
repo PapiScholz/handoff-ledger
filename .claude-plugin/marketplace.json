@@ -1,13 +1,13 @@
 {
-  "name": "session-handoff",
-  "description": "Session Handoff plugin for Claude",
+  "name": "handoff-ledger",
+  "description": "Handoff Ledger plugin for Claude",
   "owner": {
     "name": "Ezequiel Scholz",
     "url": "https://github.com/PapiScholz"
   },
   "plugins": [
     {
-      "name": "session-handoff",
+      "name": "handoff-ledger",
       "source": "./",
       "description": "Save and resume a project's working state across Claude sessions with /handoff."
     }

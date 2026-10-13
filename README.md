@@ -1,8 +1,8 @@
-# Session Handoff
+# Handoff Ledger
 
 Long Claude sessions resend their whole context every turn. `/clear` fixes that, but it also wipes your working memory: what was decided, what was tried, what comes next.
 
-**Session Handoff** gives you one command, `/handoff`, that does both halves:
+**Handoff Ledger** gives you one command, `/handoff`, that does both halves:
 
 - **At the end of a session** it distills the work into a single `HANDOFF.md` per project: goal, state, decisions *with their reasons*, what already failed, how to verify, and the exact next step.
 - **At the start of the next one** it reads that file back, checks it against the real repo (`git status`, the verify commands), summarizes it in a few lines and proposes the next step.
@@ -12,21 +12,21 @@ It works in Claude Code, Cowork and Claude chat. Where there's no filesystem, it
 ## Install
 
 ```bash
-claude plugin marketplace add PapiScholz/session-handoff
+claude plugin marketplace add PapiScholz/handoff-ledger
 ```
 
 ```bash
-claude plugin install session-handoff@session-handoff
+claude plugin install handoff-ledger@handoff-ledger
 ```
 
 ## Use
 
 | You say | It does |
 |---|---|
-| `/session-handoff:handoff` after doing work | Writes or updates `<repo>/.claude/HANDOFF.md`, shows what changed, tells you it's safe to `/clear` |
-| `/session-handoff:handoff` in a fresh session | Loads the handoff, verifies it against disk, summarizes, proposes the next step |
-| `/session-handoff:handoff resume` | Always loads |
-| `/session-handoff:handoff <note>` | Saves, keeping your note verbatim |
+| `/handoff-ledger:handoff` after doing work | Writes or updates `<repo>/.claude/HANDOFF.md`, shows what changed, tells you it's safe to `/clear` |
+| `/handoff-ledger:handoff` in a fresh session | Loads the handoff, verifies it against disk, summarizes, proposes the next step |
+| `/handoff-ledger:handoff resume` | Always loads |
+| `/handoff-ledger:handoff <note>` | Saves, keeping your note verbatim |
 
 You don't have to type the command: phrases like "save the context", "where were we" or "pick up where we left off" (and their Spanish equivalents) trigger it too.
 

@@ -3,7 +3,7 @@ name: handoff
 description: Saves and restores a project's continuity file (HANDOFF.md) so work can jump from one Claude session to the next without losing context — before a /clear, when the context window fills up, at the end of the day, or when switching between Claude Code, Cowork and Claude chat. Use it whenever the user says "/handoff", "handoff", "hand off", "save the context", "save state", "pick up where we left off", "resume", "where were we", "continue from yesterday", or the Spanish equivalents "guardá el contexto", "cortemos acá", "se me llena el contexto", "cerramos por hoy", "retomá el handoff", "seguí donde quedamos", "dónde quedamos", "retomemos". Also use it when a fresh session opens by naming a project the user was already working on, to look for its handoff before answering.
 ---
 
-# Session handoff
+# Handoff Ledger
 
 A Claude session dies with all of its working context inside it. This skill distills that context into one Markdown file per project that survives `/clear` or a closed window, and loads it back in the next session — on the same surface or a different one.
 
