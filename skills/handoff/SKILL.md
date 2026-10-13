@@ -71,7 +71,7 @@ Two copies that drift apart silently are worse than one inconvenient copy.
 4. **Summarize, don't dump.** You are rebuilding context for yourself, not making the user reread what they wrote. Reply in 5–8 lines: goal, where it stopped, what's next, what's blocked.
 5. **Propose the first next step and wait for a go-ahead.** If the user's invocation already said to continue ("resume and keep going", "seguí"), and verification in step 3 passed, execute it directly.
 6. **Stamp consumption.** Append one line `Resumed: <YYYY-MM-DD HH:mm>` at the end of the file with an edit, never a rewrite. It lets the next session tell a live handoff from a used one. Never delete the file: if the resume goes wrong, it's all that's left to try again.
-7. **Optional, cosmetic:** if the host offers a tool to rename the current session (for example a session-title tool in the Claude desktop app), set the title to the handoff's `title` field. If no such tool exists or it fails, continue without comment.
+7. **Name the session.** Set the session title to the handoff's `title` field, verbatim (see *Session title* below). Don't skip this step because the tool isn't in your visible tool list: it usually arrives deferred.
 
 Remember the path: the next `/handoff` in this session saves there.
 
@@ -84,9 +84,16 @@ Remember the path: the next `/handoff` in this session saves there.
 3. **Rewrite the state sections** with today's real state, add a new entry to the session log, and rotate it (see below).
 4. **If you are overwriting an existing handoff, show the delta first**: 3–5 bullets like "next steps: closed 2, added 1" / "the auth blocker: resolved, removing it". Write only after the user's go-ahead. Overwriting a continuity file without showing what changed is the fastest way to lose the user's trust. A first-time file is written directly.
 5. **Write with the file-writing tool**, not a shell heredoc: shells mangle backslashes in Windows paths and `$` in content.
-6. **Close with three lines**, in the user's language: where each copy ended up, what it contains in one sentence, and that it's safe to `/clear` now — invoking this same skill again in the new session (with the exact command the user typed, e.g. `/handoff-ledger:handoff`) picks it up.
+6. **Name the session** with the `title` you just wrote (see *Session title* below), so the session list says what this session was about.
+7. **Close with three lines**, in the user's language: where each copy ended up, what it contains in one sentence, and that it's safe to `/clear` now — invoking this same skill again in the new session (with the exact command the user typed, e.g. `/handoff-ledger:handoff`) picks it up.
 
 Never run `/clear` yourself: it's the user's command.
+
+### Session title
+
+In the Claude desktop app the tool is `mcp__ccd_session_mgmt__set_session_title`, called with `session_id: "self"` and `title` set to the frontmatter `title` exactly as written. It is normally a deferred tool: load it first with `ToolSearch` (`select:mcp__ccd_session_mgmt__set_session_title`), then call it. On other hosts, look for an equivalent session-rename tool the same way.
+
+Only if no such tool exists after searching, or the call fails or is declined, continue without comment.
 
 ### Log rotation
 
